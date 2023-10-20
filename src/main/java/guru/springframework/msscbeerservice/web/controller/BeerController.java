@@ -23,12 +23,12 @@ public class BeerController {
   }
 
   @PostMapping
-  public ResponseEntity saveNewBeer(@RequestBody BeerDto beerDto) {
+  public ResponseEntity<HttpStatus> saveNewBeer(@RequestBody BeerDto beerDto) {
     return new ResponseEntity<>(HttpStatus.CREATED);
   }
 
   @PutMapping("/{beerId}")
-  public ResponseEntity updateBeerById(
+  public ResponseEntity<HttpStatus> updateBeerById(
       @PathVariable("beerId") UUID beerId, @RequestBody BeerDto beerDto) {
     // TODO impl
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
