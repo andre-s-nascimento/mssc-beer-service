@@ -33,9 +33,8 @@ class BeerControllerTest {
     BeerDto beerDto = getValidBeerDto();
     String beerDtoJson = objectMapper.writeValueAsString(beerDto);
 
-    mockMvc.perform(post("/api/v1/beer")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(beerDtoJson))
+    mockMvc
+        .perform(post("/api/v1/beer").contentType(MediaType.APPLICATION_JSON).content(beerDtoJson))
         .andExpect(status().isCreated());
   }
 
@@ -54,11 +53,12 @@ class BeerControllerTest {
 
   BeerDto getValidBeerDto() {
     return BeerDto.builder()
-        .id(UUID.randomUUID())
-        .version(1)
-        .createdDate(OffsetDateTime.now())
+// This is to test the @Null validator in this point
+//        .id(UUID.randomUUID())
+//        .version(1)
+//        .createdDate(OffsetDateTime.now())
+//        .lastModifiedDate(OffsetDateTime.now())
         .quantityOnHand(100)
-        .lastModifiedDate(OffsetDateTime.now())
         .beerName("My Beer")
         .beerStyle(BeerStyleEmum.ALE)
         .price(new BigDecimal("2.99"))

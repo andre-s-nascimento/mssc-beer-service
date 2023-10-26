@@ -15,6 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Getter
 @Setter
@@ -35,7 +36,8 @@ public class Beer {
   @Column(updatable = false)
   private Timestamp createdDate;
 
-  @CreationTimestamp private Timestamp lastModifiedDate;
+  @UpdateTimestamp
+  private Timestamp lastModifiedDate;
 
   private String beerName;
   private String beerStyle;
