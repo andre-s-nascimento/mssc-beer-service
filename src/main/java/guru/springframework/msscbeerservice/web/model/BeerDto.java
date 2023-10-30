@@ -41,8 +41,7 @@ public class BeerDto {
   @Valid
   private BeerStyleEmum beerStyle;
 
-  @Positive
-  private Long upc;
+  private String upc;
 
   @NotNull
   @Positive

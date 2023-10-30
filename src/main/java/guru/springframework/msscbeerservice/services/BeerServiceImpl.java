@@ -8,12 +8,15 @@ import guru.springframework.msscbeerservice.web.model.BeerDto;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.UUID;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
 public class BeerServiceImpl implements BeerService {
+
+  public BeerServiceImpl(BeerRepository beerRepository, BeerMapper beerMapper) {
+    this.beerRepository = beerRepository;
+    this.beerMapper = beerMapper;
+  }
 
   private final BeerRepository beerRepository;
   private final BeerMapper beerMapper;
