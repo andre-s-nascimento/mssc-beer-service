@@ -1,4 +1,5 @@
-[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/7T5H4DsukpRZ9tSmkKctRx/SExTLUPoRm98BwAURTReZE/tree/main.svg?style=shield)]
+[![Java17](https://img.shields.io/badge/java-17-green)](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
+
 # MSSC Beer Service
 
 Spring Boot Microservice example
