@@ -21,9 +21,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @WebMvcTest
 class BeerControllerTest {
   @Autowired MockMvc mockMvc;
-
   @Autowired ObjectMapper objectMapper;
-
   @MockBean BeerService beerService;
 
   @Test
