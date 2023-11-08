@@ -11,6 +11,8 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -18,13 +20,16 @@ import org.springframework.util.ObjectUtils;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class BeerServiceImpl implements BeerService {
 
   private final BeerRepository beerRepository;
   private final BeerMapper beerMapper;
 
+  @Cacheable(cacheNames = "beerCache", key = "#beerId", condition = "#showInventoryOnHand == false")
   @Override
   public BeerDto getById(UUID beerId, Boolean showInventoryOnHand) {
+    log.debug("Passed here on: " + getClass().getName());
     if (showInventoryOnHand) {
       return beerMapper.beerToBeerDtoWithInventory(
           beerRepository.findById(beerId).orElseThrow(NotFoundException::new));
@@ -52,6 +57,7 @@ public class BeerServiceImpl implements BeerService {
     return beerMapper.beerToBeerDto(beerRepository.save(beer));
   }
 
+  @Cacheable(cacheNames = "beerListCache", condition = "#showInventoryOnHand == false")
   @Override
   public BeerPagedList listBeers(
       String beerName,
@@ -60,6 +66,8 @@ public class BeerServiceImpl implements BeerService {
       PageRequest pageRequest) {
     BeerPagedList beerPagedList;
     Page<Beer> beerPage;
+
+    log.debug("Passed here on: " + getClass().getName());
 
     if (!ObjectUtils.isEmpty(beerName) && !ObjectUtils.isEmpty(beerStyle)) {
       // search both
