@@ -16,18 +16,18 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 @ConfigurationProperties(prefix = "sfg.brewery", ignoreUnknownFields = false)
 @Component
-public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryService{
+public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryService {
 
-  private final String INVENTORY_PATH = "/api/v1/beer/{beerId}/inventory";
+  private static final String INVENTORY_PATH = "/api/v1/beer/{beerId}/inventory";
   private final RestTemplate restTemplate;
 
   private String beerInventoryServiceHost;
 
-  public void setBeerInventoryServiceHost(String beerInventoryServiceHost){
-    this.beerInventoryServiceHost =beerInventoryServiceHost;
+  public void setBeerInventoryServiceHost(String beerInventoryServiceHost) {
+    this.beerInventoryServiceHost = beerInventoryServiceHost;
   }
 
-  public BeerInventoryServiceRestTemplateImpl(RestTemplateBuilder restTemplateBuilder){
+  public BeerInventoryServiceRestTemplateImpl(RestTemplateBuilder restTemplateBuilder) {
     this.restTemplate = restTemplateBuilder.build();
   }
 
@@ -35,15 +35,19 @@ public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryServic
   public Integer getOnhandInventory(UUID beerId) {
     log.debug("Calling Inventory Service");
 
-    ResponseEntity<List<BeerInventoryDto>> responseEntity = restTemplate
-        .exchange(beerInventoryServiceHost+INVENTORY_PATH, HttpMethod.GET, null, new ParameterizedTypeReference<List<BeerInventoryDto>>() {}, (Object) beerId);
+    ResponseEntity<List<BeerInventoryDto>> responseEntity =
+        restTemplate.exchange(
+            beerInventoryServiceHost + INVENTORY_PATH,
+            HttpMethod.GET,
+            null,
+            new ParameterizedTypeReference<List<BeerInventoryDto>>() {},
+            (Object) beerId);
 
-    //soma da lista do inventário
-
-    Integer onHand = Objects.requireNonNull(responseEntity.getBody())
-        .stream()
-        .mapToInt(BeerInventoryDto::getQuantityOnHand)
-        .sum();
+    // soma da lista do inventário
+    Integer onHand =
+        Objects.requireNonNull(responseEntity.getBody()).stream()
+            .mapToInt(BeerInventoryDto::getQuantityOnHand)
+            .sum();
 
     return onHand;
   }

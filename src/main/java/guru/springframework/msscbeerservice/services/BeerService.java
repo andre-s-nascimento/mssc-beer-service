@@ -8,11 +8,15 @@ import org.springframework.data.domain.PageRequest;
 
 public interface BeerService {
 
-  BeerDto getById(UUID beerId);
+  BeerDto getById(UUID beerId, Boolean showInventoryOnHand);
 
   BeerDto saveNewBeer(BeerDto beerDto);
 
   BeerDto updateBeer(UUID beerId, BeerDto beerDto);
 
-  BeerPagedList listBeers(String beerName, BeerStyleEmum beerStyle, PageRequest pageRequest);
+  BeerPagedList listBeers(
+      String beerName,
+      BeerStyleEmum beerStyle,
+      Boolean showInventoryOnHand,
+      PageRequest pageRequest);
 }
