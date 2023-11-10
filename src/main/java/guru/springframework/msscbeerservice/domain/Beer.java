@@ -27,7 +27,7 @@ public class Beer {
 
   @Id
   @GeneratedValue(generator = "UUID", strategy = GenerationType.AUTO)
-  @Column(columnDefinition = "uuid", length = 36, updatable = false, nullable = false)
+  @Column(columnDefinition = "varchar(36)", length = 36, updatable = false, nullable = false)
   private UUID id;
 
   @Version private Long version;
