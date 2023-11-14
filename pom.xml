@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.github.andre-s-nascimento</groupId>
     <artifactId>mssc-brewery-bom</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
   </parent>
 
   <groupId>guru.springframework</groupId>
@@ -27,11 +27,6 @@
       <artifactId>ehcache</artifactId>
       <!-- higher than 3.9 breaks the CI -->
       <version>3.9.11</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-validation</artifactId>
     </dependency>
 
   </dependencies>
