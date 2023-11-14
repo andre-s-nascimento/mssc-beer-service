@@ -3,16 +3,20 @@ package guru.springframework.msscbeerservice.events;
 import guru.springframework.msscbeerservice.web.model.BeerDto;
 import java.io.Serial;
 import java.io.Serializable;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 @Data
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Builder
 public class BeerEvent implements Serializable {
 
   @Serial private static final long serialVersionUID = -1321L;
 
-  private final BeerDto beerDto;
+  private BeerDto beerDto;
+
+  public BeerEvent() {
+    super();
+  }
 }
