@@ -46,11 +46,13 @@ public class BeerDto implements Serializable {
   @Valid
   private BeerStyleEmum beerStyle;
 
+  @NotNull
   private String upc;
 
   @NotNull
   @Positive
   @JsonFormat(shape = Shape.STRING)
   private BigDecimal price;
+
   private Integer quantityOnHand;
 }
