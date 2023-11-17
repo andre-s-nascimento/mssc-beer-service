@@ -1,9 +1,9 @@
 package guru.springframework.msscbeerservice.web.controller;
 
 import guru.springframework.msscbeerservice.services.BeerService;
-import guru.sfg.brewery.beer.model.BeerDto;
-import guru.sfg.brewery.beer.model.BeerPagedList;
-import guru.sfg.brewery.beer.model.BeerStyleEmum;
+import guru.sfg.brewery.model.BeerDto;
+import guru.sfg.brewery.model.BeerPagedList;
+import guru.sfg.brewery.model.BeerStyleEmum;
 import jakarta.validation.Valid;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
