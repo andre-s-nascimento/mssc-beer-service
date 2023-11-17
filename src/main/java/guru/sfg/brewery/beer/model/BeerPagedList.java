@@ -1,4 +1,4 @@
-package guru.sfg.brewery.model;
+package guru.sfg.brewery.beer.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;

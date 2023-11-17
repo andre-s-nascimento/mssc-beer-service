@@ -1,6 +1,6 @@
-package guru.sfg.brewery.model.events;
+package guru.sfg.brewery.beer.model.events;
 
-import guru.sfg.brewery.model.BeerDto;
+import guru.sfg.brewery.beer.model.BeerDto;
 import java.io.Serial;
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
