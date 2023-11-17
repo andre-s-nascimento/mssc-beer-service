@@ -3,7 +3,6 @@ package guru.springframework.msscbeerservice.bootstrap;
 import guru.springframework.msscbeerservice.domain.Beer;
 import guru.springframework.msscbeerservice.repositories.BeerRepository;
 import java.math.BigDecimal;
-import java.util.UUID;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

@@ -2,7 +2,6 @@ package guru.springframework.msscbeerservice.repositories;
 
 import guru.springframework.msscbeerservice.domain.Beer;
 import guru.springframework.msscbeerservice.web.model.BeerStyleEmum;
-import java.util.Optional;
 import java.util.UUID;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
